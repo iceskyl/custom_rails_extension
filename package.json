@@ -24,6 +24,14 @@
       {
         "command": "extension.generate-app-api",
         "title": "Bean: Generate APP API"
+      },
+      {
+        "command": "extension.generate-admin-api",
+        "title": "Bean: Generate Admin API"
+      },
+      {
+        "command": "extension.generate-admin-template",
+        "title": "Bean: Generate Admin Template"
       }
     ],
     "keybindings": [

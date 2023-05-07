@@ -59,6 +59,36 @@ export function activate(context: vscode.ExtensionContext) {
 			terminal.sendText(`rails generate api app_api/v1/${model.modelName.collection}`);
 		}
 	}));
+
+	context.subscriptions.push(vscode.commands.registerCommand("extension.generate-admin-api", () => {
+		if (!vscode.window.activeTextEditor) {
+			return;
+		}
+
+		const editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const model = new Model(vscode.workspace.asRelativePath(vscode.window.activeTextEditor.document.fileName));
+			const terminal = vscode.window.createTerminal("bean");
+			terminal.show();
+			terminal.sendText(`rails generate api admin_api/v1/${model.modelName.collection}`);
+		}
+	}));
+
+  context.subscriptions.push(vscode.commands.registerCommand("extension.generate-admin-template", () => {
+		if (!vscode.window.activeTextEditor) {
+			return;
+		}
+
+		const editor: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
+
+		if (editor) {
+			const model = new Model(vscode.workspace.asRelativePath(vscode.window.activeTextEditor.document.fileName));
+			const terminal = vscode.window.createTerminal("bean");
+			terminal.show();
+			terminal.sendText(`rails generate admin_template ${model.modelName.collection}`);
+		}
+	}));
 }
 
 // This method is called when your extension is deactivated
